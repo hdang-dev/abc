@@ -1,6 +1,6 @@
 import { BlogCard, Hero } from "@/components";
 import Image from "next/image";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export default function Landing() {
   return (
@@ -31,16 +31,16 @@ export default function Landing() {
                 </div>
               </div>
             </div>
-            <CategoryPanel items={[
-              { title: 'Tất cả', count: 108 },
-              { title: 'Thiết Kế Website', count: 36 },
-              { title: 'Thiết Kế App Mobile', count: 13 },
-              { title: 'Quản Lý Sản Xuất', count: 25 },
-              { title: 'Báo Chí Nói Về FOSO', count: 7 },
-              { title: 'Tin Tức FOSO', count: 5 },
-            ]} />
-
-
+            <CategoryPanel
+              items={[
+                { title: "Tất cả", count: 108 },
+                { title: "Thiết Kế Website", count: 36 },
+                { title: "Thiết Kế App Mobile", count: 13 },
+                { title: "Quản Lý Sản Xuất", count: 25 },
+                { title: "Báo Chí Nói Về FOSO", count: 7 },
+                { title: "Tin Tức FOSO", count: 5 },
+              ]}
+            />
 
             <Image src="/banner2.png" alt="Banner 2" width={100} height={100} style={{ width: "100%", height: "auto" }} />
 
@@ -48,11 +48,31 @@ export default function Landing() {
           </div>
         </section>
       </div>
+
+      <div className="flex justify-between">
+        <button className="flex gap-2 cursor-pointer">
+          <ArrowLeftIcon className="size-6" />
+          Trang trước
+        </button>
+        <div className="flex gap-0.5">
+          <button className="btn btn-ghost bg-[#D1F7EA]">1</button>
+          <button className="btn btn-ghost">2</button>
+          <button className="btn btn-ghost">3</button>
+          <div className="size-10 grid place-items-center">...</div>
+          <button className="btn btn-ghost">8</button>
+          <button className="btn btn-ghost">9</button>
+          <button className="btn btn-ghost">10</button>
+        </div>
+        <button className="flex gap-2 cursor-pointer">
+          Trang kế tiếp
+          <ArrowRightIcon className="size-6" />
+        </button>
+      </div>
     </div>
   );
 }
 
-const CategoryPanel = ({ items }: { items: Array<{ title: string, count: number; }>; }) => {
+const CategoryPanel = ({ items }: { items: Array<{ title: string; count: number }> }) => {
   return (
     <div>
       <h1 className="font-extrabold text-2xl mb-6">Danh Mục</h1>
