@@ -1,103 +1,71 @@
+import { BlogCard, Hero } from "@/components";
 import Image from "next/image";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-export default function Home() {
+export default function Landing() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col gap-24">
+      <Hero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="flex mx-auto gap-8">
+        <section className="w-[1042px]">
+          <h1 className="font-extrabold text-4xl mb-6">Tất cả bài viết</h1>
+          <Image src="/banner1.png" alt="Banner 1" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+          <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-12">
+            {[...Array(6)].map((_, index) => (
+              <BlogCard key={index} />
+            ))}
+          </div>
+        </section>
+
+        <section className="w-[366px]">
+          <div className="flex flex-col gap-8">
+            <div>
+              <h1 className="font-extrabold text-2xl mb-6">Tìm Kiếm</h1>
+              <div className="px-2 py-3 bg-white rounded-xl">
+                <div className="flex">
+                  <input type="text" placeholder="Tìm kiếm bài viết" className="px-1 flex-1 outline-none" />
+                  <button className="btn size-12 p-0 rounded-xl bg-[#15AA7A] text-white">
+                    <MagnifyingGlassIcon className="size-6" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <CategoryPanel items={[
+              { title: 'Tất cả', count: 108 },
+              { title: 'Thiết Kế Website', count: 36 },
+              { title: 'Thiết Kế App Mobile', count: 13 },
+              { title: 'Quản Lý Sản Xuất', count: 25 },
+              { title: 'Báo Chí Nói Về FOSO', count: 7 },
+              { title: 'Tin Tức FOSO', count: 5 },
+            ]} />
+
+
+
+            <Image src="/banner2.png" alt="Banner 2" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+
+            <Image src="/banner3.png" alt="Banner 3" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
+
+const CategoryPanel = ({ items }: { items: Array<{ title: string, count: number; }>; }) => {
+  return (
+    <div>
+      <h1 className="font-extrabold text-2xl mb-6">Danh Mục</h1>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            <div className="flex justify-between pb-2 mb-4 border-b">
+              <span>{item.title}</span>
+              <span>{item.count}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
