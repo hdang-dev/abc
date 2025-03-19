@@ -1,7 +1,14 @@
+'use client';
+
 import Image from "next/image";
 import { ArrowRightIcon, CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { useRouter } from "next/navigation";
 
 export const BlogCard = () => {
+    const router = useRouter();
+    const goToDetailPage = () => {
+        router.push('/blog');
+    };
     return (
         <div>
             <Image src="/blog.png" alt="Blog" width={100} height={100} style={{ width: "100%", height: "auto" }} />
@@ -19,7 +26,7 @@ export const BlogCard = () => {
                         <span>10 phút đọc</span>
                     </div>
                 </div>
-                <button className="flex gap-4 py-2.5 w-fit text-lg cursor-pointer">
+                <button className="flex gap-4 py-2.5 w-fit text-lg cursor-pointer" onClick={() => goToDetailPage()}>
                     Khám phá thêm
                     <ArrowRightIcon className="size-6" />
                 </button>

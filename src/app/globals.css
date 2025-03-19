@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+    --primary: #15aa7a
+}
+
+html {
+    scroll-behavior: smooth;
+}
