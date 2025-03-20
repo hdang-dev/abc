@@ -1,27 +1,21 @@
 import { BlogCard, Breadcrumb, Header } from "@/components";
 import Image from "next/image";
 import { MagnifyingGlassIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
-export default function Landing() {
+export default function LandingPage() {
   return (
-    <div className="bg-[url(/background.svg)]">
-      <div className="py-6">
+    <div className="bg-[url(/background.svg)] bg-no-repeat bg-cover py-6">
+      <div className="flex flex-col items-center">
         <Header />
-      </div>
-
-      <div className="flex flex-col gap-24 ">
-
-        <section className="relative">
-          <Image src="/hero.svg" alt="hero" width="500" height="100" style={{ width: "100%", height: "auto" }} />
-          <div className="absolute top-12 left-1/2 -translate-x-1/2">
-            <Breadcrumb items={["Trang chủ", "Tài nguyên", "Blog"]} />
-          </div>
-        </section>
-
-        <div className="flex mx-auto gap-8">
-          <section className="w-[1042px]">
+        <div className="mt-[72px]" />
+        <Breadcrumb items={["Trang chủ", "Tài nguyên", "Blog"]} />
+        <Image src="/hero.svg" alt="hero" width={100} height={100} className="w-full max-w-[1920px]" />
+        <div className="mt-[96px]" />
+        <div className="w-[1440px] flex gap-8">
+          <section className="flex-1">
             <h1 className="font-extrabold text-4xl mb-6">Tất cả bài viết</h1>
-            <Image src="/banner-1.svg" alt="Banner 1" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+            <Image src="/banner-1.svg" alt="Banner 1" width={100} height={100} className="w-full" />
             <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-12">
               {[...Array(6)].map((_, index) => (
                 <BlogCard key={index} />
@@ -53,9 +47,9 @@ export default function Landing() {
                 ]}
               />
 
-              <Image src="/banner-2.svg" alt="Banner 2" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+              <Image src="/banner-2.svg" alt="Banner 2" width={100} height={100} className="w-[366px]" />
 
-              <Image src="/banner-3.svg" alt="Banner 3" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+              <Image src="/banner-3.svg" alt="Banner 3" width={100} height={100} className="w-[366px]" />
             </div>
           </section>
         </div>
@@ -84,17 +78,17 @@ export default function Landing() {
   );
 }
 
-const CategoryPanel = ({ items }: { items: Array<{ title: string; count: number; }>; }) => {
+const CategoryPanel = ({ items }: { items: Array<{ title: string; count: number }> }) => {
   return (
     <div>
       <h1 className="font-extrabold text-2xl mb-6">Danh Mục</h1>
       <ul>
         {items.map((item, index) => (
           <li key={index}>
-            <div className="flex justify-between pb-2 mb-4 border-b">
+            <Link href="#" className="flex justify-between pb-2 mb-4 border-b border-[#f1f5f7] text-lg hover:border-black">
               <span>{item.title}</span>
-              <span>{item.count}</span>
-            </div>
+              <span className="text-[var(--sub-text)]">{item.count}</span>
+            </Link>
           </li>
         ))}
       </ul>
