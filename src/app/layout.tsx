@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components";
+
+import { Raleway } from 'next/font/google';
+
+const raleway = Raleway({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: "FOSO",
@@ -14,8 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#F9FBFC] py-[24px]">
-        <Header />
+      <body className={raleway.className}>
         {children}
       </body>
     </html>

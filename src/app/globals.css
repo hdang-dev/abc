@@ -2,7 +2,9 @@
 @plugin "daisyui";
 
 :root {
-    --primary: #15aa7a
+    --primary: #15aa7a;
+    --btn-primary: #1ad598;
+    --btn-secondary: #d1f7ea;
 }
 
 html {

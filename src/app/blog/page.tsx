@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { BlogCard } from "@/components";
 
 export default function BlogPage() {
     return (
@@ -25,7 +26,7 @@ export default function BlogPage() {
                                 <div className="flex gap-3 items-center">
                                     <div className="avatar">
                                         <div className="w-24 rounded-full">
-                                            <Image src="/avatar.png" alt="avatar" width={100} height={100} className="size-16" />
+                                            <Image src="/avatar.svg" alt="avatar" width={100} height={100} className="size-16" />
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
@@ -153,17 +154,62 @@ export default function BlogPage() {
                     </div>
                 </section>
                 <section className="w-[492px]">
-                    <div className="collapse collapse-arrow bg-base-100 border-base-300 border">
+                    <div className="collapse collapse-arrow collapse-open">
                         <input type="checkbox" />
-                        <div className="collapse-title font-semibold">Nội dung bài viết</div>
-                        <div className="collapse-content text-sm">
-                            <ul>
-                                <li><Link href="#sub-title-3">aaaa</Link></li>
-                            </ul>
-
+                        <div className="collapse-title px-0 font-extrabold text-2xl">Nội dung bài viết</div>
+                        <div className="collapse-content p-0 text-sm">
+                            <BlogTree items={[
+                                { text: "1. Quy trình 5s là gì?", link: "#" },
+                                { text: "2. Lợi ích quy trình 5S đem lại", link: "#" },
+                                {
+                                    text: "3. Tại sao doanh nghiệp nên áp dụng quy trình 5S?", link: "#",
+                                    subItems: [
+                                        { text: "3.1  Cải thiện rõ nét môi trường làm việc", link: "#" },
+                                        { text: "3.2 Tiết kiệm thời gian đáng kể", link: "#" },
+                                        { text: "3.3 Tăng năng suất làm việc", link: "#" },
+                                        { text: "3.4 Tiết kiệm chi phí", link: "#" },
+                                        { text: "3.5 Tăng chất lượng sản phẩm", link: "#" },
+                                    ]
+                                },
+                                {
+                                    text: "4. Quy trình 5S gồm các bước:", link: "#",
+                                    subItems: [
+                                        { text: "4.1 Seiri (Ngăn nắp)", link: "#" },
+                                        { text: "4.2 Seiton (Sắp xếp)", link: "#" },
+                                        { text: "4.3 Seiso (Vệ sinh)", link: "#" },
+                                        { text: "4.4 Seiketsu (Tiêu chuẩn hóa)", link: "#" },
+                                        { text: "4.5 Shitsuke (Kỷ luật)", link: "#" },
+                                    ]
+                                },
+                                {
+                                    text: "5. Quy trình được thực hiện như sau:", link: "#",
+                                    subItems: [
+                                        { text: "5.1 Giai đoạn chuẩn bị", link: "#" },
+                                        { text: "5.2 Triển khai rộng rãi", link: "#" },
+                                        { text: "5.3 Thực hiện vệ sinh toàn bộ doanh nghiệp", link: "#" },
+                                        { text: "5.4 Sàng lọc, sắp xếp và đánh giá", link: "#" },
+                                        { text: "5.5 Đánh giá", link: "#" },
+                                    ]
+                                },
+                                { text: "6. Quy trình 5S có giống với Kaizen?", link: "#" },
+                                { text: "7. Đối tượng nào nên áp dụng 5S?", link: "#" },
+                                { text: "8. Các yếu tố tạo nên thành công cho quy trình 5S", link: "#" },
+                            ]} />
                         </div>
                     </div>
+                    <Image src="/banner-2.svg" alt="Banner 2" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+
+                    <Image src="/banner-3.svg" alt="Banner 3" width={100} height={100} style={{ width: "100%", height: "auto" }} />
                 </section>
+            </div>
+
+            <div>
+                <h2 className="font-extrabold text-4xl">Bài viết liên quan</h2>
+                <div className="flex gap-8">
+                    <BlogCard />
+                    <BlogCard />
+                    <BlogCard />
+                </div>
             </div>
         </div>
     );
@@ -215,5 +261,28 @@ const ReactItem = ({ imageSrc, count, name, active }: { imageSrc: string, count:
                 <span>{name}</span>
             </div>
         </button>
+    );
+};
+
+interface IBlogTreeItem {
+    text: string,
+    link: string;
+    subItems?: IBlogTreeItem[];
+}
+
+const BlogTree = ({ items }: { items: IBlogTreeItem[]; }) => {
+    return (
+        <ul>
+            {items.map((item, index) => (
+                <li key={index}>
+                    <Link href={item.link} className="text-lg leading-[200%]">{item.text}</Link>
+                    {item.subItems && (
+                        <div className="ml-6">
+                            <BlogTree items={item.subItems} />
+                        </div>
+                    )}
+                </li>
+            ))}
+        </ul>
     );
 };

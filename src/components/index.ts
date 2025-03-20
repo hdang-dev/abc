@@ -1,3 +1,3 @@
 export * from './header';
-export * from './hero';
 export * from './blogCard';
+export * from './breadcrumb';

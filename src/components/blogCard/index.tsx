@@ -11,7 +11,7 @@ export const BlogCard = () => {
     };
     return (
         <div>
-            <Image src="/blog.png" alt="Blog" width={100} height={100} style={{ width: "100%", height: "auto" }} />
+            <Image src="/blog.svg" alt="Blog" width={100} height={100} style={{ width: "100%", height: "auto" }} />
             <div className="mt-6 flex flex-col gap-4">
                 <div className="badge badge-soft badge-info">Quản Lý Sản Xuất</div>
                 <h2 className="font-extrabold text-2xl">Tại sao BOM quan trọng trong quản lý sản xuất?</h2>
